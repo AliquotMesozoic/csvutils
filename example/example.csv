@@ -1,7 +1,4 @@
-State,State Administration Fee,Tax Rate
-Kentucky,$4 per course,0%
-Course Offerings,Hours,Cost
-Continuing Education Downloadable PDF Courses,,
+Continuing Education Downloadable PDF Courses,Hours,Cost
 Annuities Training Course,6,55
 Business Insurance Perspectives,12,66
 Disability Income Training Course,10,55
@@ -33,3 +30,7 @@ Business Insurance Online,12,64
 Retirement Planning at Any Age,,62
 Single Needs Online,7,52
 Target Ethics Online,5,50
+,,
+Additional Charges,,
+State Administration Fee ($3.75 per credit hour),,
+"Shipping ($8 for one course, $3 per each additional course; not applicable to downloadable courses)",,

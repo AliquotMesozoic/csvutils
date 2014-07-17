@@ -1,11 +1,52 @@
 <html>
     <head>
         <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-        <script src="../papaparse.min.js"></script>
+        <script src="../libs/papaparse.min.js"></script>
         <script src="../libs/parserhelper.js"></script>
     </head>
     <body>
+        <table id="test-table">
+            <tbody></tbody>
+        </table>
         
+        <script>
+            function insertTable(csv){
+                
+                console.log(csv.data);
+                var additional = false;
+                
+                csv.data.forEach(function(row){
+                    if (row[0].match("dministration" || row[0].match(/hipping \(/)) !== null){
+                        additional = true;
+                    }
+                    
+                    if (row[2].match(/\d/) === null && row[0].match(/\d/) === null){
+                        $("#test-table tbody").append(
+                            "<tr class='subheader'><td></td><td>" + row[0] + "</td><td>" +
+                            row[1] + "</td><td>" + row[2] + "</td></tr>");
+                    } else if (row[0].length === 0){
+                        $("#test-table tbody").append(
+                            "<tr><td><br></td><td></td><td></td><td></td></tr>");
+                    } else if (!additional){
+                        $("#test-table tbody").append(
+                            "<tr><td><input type='checkbox'></td>" +
+                            "<td>" + row[0] + "</td>" +
+                            "<td>" + row[1] + "</td>" +
+                            "<td>" + row[2] + "</td>"
+                        );
+                    } else {
+                        $("#test-table tbody").append(
+                            "<tr><td></td><td>" + row[0] + "</td><td></td><td></td>");
+                    }
+                });
+            }
+            
+            Papa.parse("/example/example.csv", {
+                download: true,
+                complete: insertTable
+            });
+        
+        </script>
     </body>
 
 </html>
